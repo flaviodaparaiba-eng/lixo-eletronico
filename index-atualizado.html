@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-Lixo Consciente | Patos-PB</title>
+
+<style>
+:root{
+  --verde:#16a34a;
+  --verde-escuro:#0f5132;
+  --verde-claro:#dcfce7;
+  --azul:#0f766e;
+  --escuro:#10231b;
+  --cinza:#f4f7f5;
+  --texto:#24332b;
+  --branco:#fff;
+  --sombra:0 12px 35px rgba(16,35,27,.10);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{scroll-behavior:smooth}
+
+body{
+  font-family:Arial, Helvetica, sans-serif;
+  color:var(--texto);
+  background:#f7faf8;
+  line-height:1.6;
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid #e4ece7;
+}
+
+.nav{
+  max-width:1150px;
+  margin:auto;
+  padding:15px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:800;
+  color:var(--verde-escuro);
+  font-size:1.15rem;
+}
+
+.logo span{
+  background:var(--verde);
+  color:white;
+  width:38px;
+  height:38px;
+  display:grid;
+  place-items:center;
+  border-radius:12px;
+  font-size:20px;
+}
+
+nav{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+nav a{
+  text-decoration:none;
+  color:#385047;
+  font-size:.92rem;
+  font-weight:700;
+}
+
+nav a:hover{color:var(--verde)}
+
+.hero{
+  background:
+    radial-gradient(circle at 85% 20%,rgba(34,197,94,.22),transparent 25%),
+    linear-gradient(135deg,#0f5132,#0f766e);
+  color:white;
+  padding:90px 22px 100px;
+}
+
+.hero-content{
+  max-width:1150px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1.3fr .7fr;
+  gap:50px;
+  align-items:center;
+}
+
+.badge{
+  display:inline-block;
+  background:rgba(255,255,255,.13);
+  border:1px solid rgba(255,255,255,.25);
+  padding:8px 14px;
+  border-radius:30px;
+  margin-bottom:20px;
+  font-size:.85rem;
+  font-weight:700;
+}
+
+.hero h1{
+  font-size:clamp(2.4rem,6vw,4.6rem);
+  line-height:1.02;
+  margin-bottom:22px;
+}
+
+.hero h1 span{color:#86efac}
+
+.hero p{
+  font-size:1.15rem;
+  max-width:680px;
+  color:#e8fff0;
+  margin-bottom:30px;
+}
+
+.buttons{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  display:inline-block;
+  padding:13px 20px;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:800;
+  transition:.2s;
+}
+
+.btn-primary{
+  background:white;
+  color:var(--verde-escuro);
+}
+
+.btn-secondary{
+  border:1px solid rgba(255,255,255,.35);
+  color:white;
+  background:rgba(255,255,255,.08);
+}
+
+.btn:hover{transform:translateY(-2px)}
+
+.hero-card{
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.20);
+  border-radius:25px;
+  padding:30px;
+  box-shadow:0 20px 50px rgba(0,0,0,.15);
+}
+
+.hero-card .big-icon{
+  font-size:5rem;
+  margin-bottom:10px;
+}
+
+.hero-card h3{font-size:1.5rem;margin-bottom:8px}
+
+section{
+  padding:80px 22px;
+}
+
+.container{
+  max-width:1150px;
+  margin:auto;
+}
+
+.section-title{
+  max-width:720px;
+  margin-bottom:42px;
+}
+
+.section-title .tag{
+  color:var(--verde);
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  font-size:.8rem;
+}
+
+.section-title h2{
+  font-size:clamp(2rem,4vw,3rem);
+  color:var(--escuro);
+  margin:7px 0 12px;
+}
+
+.section-title p{color:#60736a}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.card{
+  background:white;
+  border:1px solid #e3ebe6;
+  border-radius:20px;
+  padding:26px;
+  box-shadow:var(--sombra);
+}
+
+.card-icon{
+  font-size:2rem;
+  margin-bottom:15px;
+}
+
+.card h3{
+  color:var(--verde-escuro);
+  margin-bottom:10px;
+}
+
+.card p{color:#60736a}
+
+.highlight{
+  background:var(--verde-claro);
+  border-left:5px solid var(--verde);
+  padding:22px;
+  border-radius:14px;
+  margin-top:25px;
+}
+
+.items{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+}
+
+.item{
+  display:flex;
+  gap:15px;
+  background:white;
+  border:1px solid #e4ece7;
+  padding:22px;
+  border-radius:18px;
+}
+
+.item-icon{
+  min-width:44px;
+  height:44px;
+  display:grid;
+  place-items:center;
+  background:var(--verde-claro);
+  border-radius:12px;
+  font-size:1.3rem;
+}
+
+.steps{
+  counter-reset:step;
+  display:grid;
+  gap:18px;
+}
+
+.step{
+  counter-increment:step;
+  background:white;
+  border:1px solid #e4ece7;
+  border-radius:18px;
+  padding:22px 25px 22px 75px;
+  position:relative;
+}
+
+.step:before{
+  content:counter(step);
+  position:absolute;
+  left:22px;
+  top:20px;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:var(--verde);
+  color:white;
+  display:grid;
+  place-items:center;
+  font-weight:800;
+}
+
+.locations{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.location{
+  background:white;
+  border-radius:20px;
+  padding:26px;
+  border:1px solid #e4ece7;
+  box-shadow:var(--sombra);
+}
+
+.location .pin{
+  font-size:2rem;
+}
+
+.location h3{margin:12px 0 8px;color:var(--verde-escuro)}
+
+.location p{color:#60736a}
+
+.notice{
+  background:#fff7ed;
+  border:1px solid #fed7aa;
+  border-radius:15px;
+  padding:20px;
+  margin-top:25px;
+  color:#7c4613;
+}
+
+.team{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:22px;
+}
+
+.person{
+  background:white;
+  padding:28px;
+  border-radius:20px;
+  border:1px solid #e4ece7;
+}
+
+.person strong{
+  color:var(--verde-escuro);
+  display:block;
+  font-size:1.15rem;
+}
+
+.cta{
+  background:linear-gradient(135deg,#0f5132,#0f766e);
+  color:white;
+  border-radius:28px;
+  padding:55px;
+  text-align:center;
+}
+
+.cta h2{font-size:2.3rem;margin-bottom:12px}
+.cta p{max-width:700px;margin:0 auto 25px;color:#e8fff0}
+
+footer{
+  background:#0b1f16;
+  color:#c8d8d0;
+  padding:40px 22px;
+}
+
+.footer-content{
+  max-width:1150px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  gap:25px;
+  flex-wrap:wrap;
+}
+
+footer strong{color:white}
+
+.small{
+  font-size:.88rem;
+  color:#82968d;
+}
+
+@media(max-width:850px){
+  .hero-content{grid-template-columns:1fr}
+  .grid,.locations{grid-template-columns:1fr 1fr}
+}
+
+@media(max-width:600px){
+  nav{display:none}
+  section{padding:60px 18px}
+  .grid,.locations,.items,.team{grid-template-columns:1fr}
+  .hero{padding:65px 18px}
+  .hero-card{padding:22px}
+  .cta{padding:35px 22px}
+  .step{padding-left:70px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <a class="logo" href="#inicio">
+      <span>♻</span>
+      E-Lixo Consciente
+    </a>
+
+    <nav>
+      <a href="#sobre">O que é?</a>
+      <a href="#impactos">Impactos</a>
+      <a href="#descarte">Como descartar</a>
+      <a href="#locais">Onde descartar</a>
+      <a href="#equipe">Equipe</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="inicio">
+  <div class="hero-content">
+
+    <div>
+      <div class="badge">Projeto escolar • Patos-PB • 2026</div>
+
+      <h1>
+        Dê um destino melhor ao seu
+        <span>lixo eletrônico.</span>
+      </h1>
+
+      <p>
+        Informação que conscientiza, orientação que ajuda e atitudes que
+        contribuem para uma cidade mais sustentável.
+      </p>
+
+      <div class="buttons">
+        <a class="btn btn-primary" href="#sobre">Conheça o projeto</a>
+        <a class="btn btn-secondary" href="#locais">Ver pontos de descarte</a>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="big-icon">💻♻️</div>
+      <h3>Você sabe onde descartar?</h3>
+      <p>
+        Celulares, computadores, pilhas, baterias, cabos e outros aparelhos
+        precisam receber uma destinação adequada quando deixam de ser usados.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="container">
+
+    <div class="section-title">
+      <div class="tag">01 • Entenda</div>
+      <h2>O que é resíduo eletrônico?</h2>
+      <p>
+        Entenda o que caracteriza o lixo eletrônico e quais materiais podem
+        fazer parte dessa categoria.
+      </p>
+    </div>
+
+    <div class="grid">
+
+      <div class="card">
+        <div class="card-icon">📱</div>
+        <h3>Celulares</h3>
+        <p>
+          Aparelhos antigos, quebrados ou que deixaram de ser utilizados.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">💻</div>
+        <h3>Computadores</h3>
+        <p>
+          Computadores e equipamentos de informática que chegaram ao fim
+          de sua vida útil.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🔋</div>
+        <h3>Pilhas e baterias</h3>
+        <p>
+          Materiais que precisam de atenção especial e não devem ser
+          descartados junto ao lixo comum.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🖨️</div>
+        <h3>Outros equipamentos</h3>
+        <p>
+          Televisores, impressoras, carregadores, cabos e outros aparelhos
+          eletrônicos também podem se tornar resíduos.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">♻️</div>
+        <h3>Reaproveitamento</h3>
+        <p>
+          Muitos materiais presentes nesses equipamentos podem ser
+          reaproveitados ou encaminhados para reciclagem.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🌱</div>
+        <h3>Destinação adequada</h3>
+        <p>
+          O descarte correto ajuda a evitar problemas ambientais e reduz
+          o desperdício de materiais.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="highlight">
+      <strong>Em resumo:</strong>
+      resíduos eletrônicos são equipamentos eletrônicos que foram descartados
+      porque não funcionam mais, estão quebrados ou simplesmente não são mais
+      utilizados.
+    </div>
+
+  </div>
+</section>
+
+<section id="impactos" style="background:#eef7f1">
+  <div class="container">
+
+    <div class="section-title">
+      <div class="tag">02 • Atenção</div>
+      <h2>Os impactos do descarte inadequado</h2>
+      <p>
+        Jogar eletrônicos no lixo comum pode gerar problemas ambientais e
+        representar o desperdício de materiais que poderiam ser reaproveitados.
+      </p>
+    </div>
+
+    <div class="items">
+
+      <div class="item">
+        <div class="item-icon">🌎</div>
+        <div>
+          <h3>Impactos ambientais</h3>
+          <p>
+            O descarte inadequado pode causar impactos negativos ao meio
+            ambiente, principalmente quando materiais não recebem o tratamento
+            adequado.
+          </p>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="item-icon">💧</div>
+        <div>
+          <h3>Contaminação</h3>
+          <p>
+            Alguns componentes podem contribuir para a contaminação do solo
+            e da água quando são descartados de maneira incorreta.
+          </p>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="item-icon">♻️</div>
+        <div>
+          <h3>Desperdício de materiais</h3>
+          <p>
+            O descarte incorreto pode impedir que materiais sejam
+            reaproveitados ou encaminhados para processos de reciclagem.
+          </p>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="item-icon">🏙️</div>
+        <div>
+          <h3>Problema para a comunidade</h3>
+          <p>
+            O descarte em ruas, terrenos ou junto ao lixo comum dificulta
+            uma destinação adequada e pode aumentar a quantidade de resíduos.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section id="descarte">
+  <div class="container">
+
+    <div class="section-title">
+      <div class="tag">03 • Faça sua parte</div>
+      <h2>Como descartar corretamente?</h2>
+      <p>
+        Algumas atitudes simples ajudam a encaminhar seus eletrônicos para
+        uma destinação adequada.
+      </p>
+    </div>
+
+    <div class="steps">
+
+      <div class="step">
+        <h3>Separe os resíduos eletrônicos</h3>
+        <p>
+          Não misture equipamentos eletrônicos com o lixo doméstico comum.
+        </p>
+      </div>
+
+      <div class="step">
+        <h3>Identifique o que será descartado</h3>
+        <p>
+          Separe celulares, computadores, pilhas, baterias, cabos,
+          carregadores e outros equipamentos sem uso.
+        </p>
+      </div>
+
+      <div class="step">
+        <h3>Apague seus dados pessoais</h3>
+        <p>
+          Quando possível, antes de entregar celulares e computadores,
+          apague informações pessoais e arquivos importantes.
+        </p>
+      </div>
+
+      <div class="step">
+        <h3>Procure um ponto adequado</h3>
+        <p>
+          Encaminhe os materiais para pontos de coleta, empresas, instituições
+          ou programas que realizem a coleta e a destinação adequada. Confirme
+          previamente se o local aceita o material.
+        </p>
+      </div>
+
+      <div class="step">
+        <h3>Não descarte no lixo comum</h3>
+        <p>
+          Evite colocar equipamentos eletrônicos, pilhas e baterias em
+          lixeiras destinadas aos resíduos domésticos.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="notice">
+      <strong>⚠️ Importante:</strong>
+      a finalidade deste projeto é orientar e facilitar o acesso às informações.
+      Antes de levar um material a um estabelecimento, confirme se o local
+      recebe especificamente o tipo de resíduo que você deseja descartar.
+    </div>
+
+  </div>
+</section>
+
+<section id="locais" style="background:#eef7f1">
+  <div class="container">
+
+    <div class="section-title">
+      <div class="tag">04 • Patos-PB</div>
+      <h2>Onde descartar?</h2>
+      <p>
+        Pesquisa atualizada sobre opções de descarte de resíduos eletrônicos
+        relacionadas a Patos-PB. As informações abaixo foram mantidas apenas
+        quando foi possível encontrar confirmação em fontes recentes.
+      </p>
+    </div>
+
+    <div class="locations">
+
+      <div class="location">
+        <div class="pin">📍</div>
+        <h3>Semear Sustentabilidade</h3>
+        <p>
+          A Semear mantém uma rede de Pontos de Entrega Voluntária (PEVs)
+          na Paraíba e informa que há locais credenciados para descarte
+          de eletrônicos em Patos-PB.
+        </p>
+        <p style="margin-top:12px;">
+          <strong>Importante:</strong> o endereço específico do PEV de Patos
+          não foi informado nas fontes consultadas. Confirme o ponto disponível
+          antes de sair de casa.
+        </p>
+        <p style="margin-top:12px;">
+          📞 <strong>(83) 98908-0145</strong><br>
+          ✉️ atendimento@semearsustentabilidade.com.br
+        </p>
+        <p style="margin-top:14px;">
+          <a href="https://semearsustentabilidade.com.br/" target="_blank"
+             rel="noopener noreferrer"
+             style="color:var(--verde);font-weight:800;text-decoration:none;">
+            Acessar o site da Semear →
+          </a>
+        </p>
+      </div>
+
+      <div class="location">
+        <div class="pin">🔎</div>
+        <h3>Como confirmar um ponto</h3>
+        <p>
+          Como os pontos de entrega podem mudar, confirme diretamente com a
+          Semear qual PEV credenciado está disponível em Patos-PB e quais
+          tipos de resíduos são aceitos.
+        </p>
+        <p style="margin-top:12px;">
+          A rede da empresa recebe principalmente eletrônicos de menor porte
+          nos pontos fixos, enquanto também realiza coletas agendadas.
+        </p>
+      </div>
+
+      <div class="location">
+        <div class="pin">⚠️</div>
+        <h3>Informações não confirmadas</h3>
+        <p>
+          ASCAP, Reciclatec Informática e o antigo “Ecoponto Patos-PB” foram
+          retirados desta lista porque não encontramos, nas fontes consultadas,
+          confirmação suficiente de que funcionem atualmente como pontos de
+          coleta de lixo eletrônico.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="notice">
+      <strong>📌 Atenção:</strong>
+      antes de levar um eletrônico, confirme o endereço do ponto e se ele
+      aceita o tipo de material que você pretende entregar. As informações
+      de pontos de coleta podem mudar.
+    </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="container">
+
+    <div class="section-title">
+      <div class="tag">05 • Nosso propósito</div>
+      <h2>Informação pode virar atitude.</h2>
+      <p>
+        O projeto busca facilitar o acesso a informações claras sobre resíduos
+        eletrônicos e incentivar hábitos mais responsáveis em relação ao meio
+        ambiente.
+      </p>
+    </div>
+
+    <div class="grid">
+
+      <div class="card">
+        <div class="card-icon">📚</div>
+        <h3>Informar</h3>
+        <p>
+          Explicar o que são resíduos eletrônicos e quais materiais fazem
+          parte dessa categoria.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🧭</div>
+        <h3>Orientar</h3>
+        <p>
+          Mostrar como separar e encaminhar equipamentos para uma
+          destinação adequada.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🌱</div>
+        <h3>Conscientizar</h3>
+        <p>
+          Incentivar atitudes mais responsáveis e contribuir para a
+          preservação ambiental.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section id="equipe" style="background:#f0f6f2">
+  <div class="container">
+
+    <div class="section-title">
+      <div class="tag">06 • Equipe</div>
+      <h2>Quem desenvolveu o projeto?</h2>
+      <p>
+        Projeto desenvolvido para a disciplina de Informática.
+      </p>
+    </div>
+
+    <div class="team">
+
+      <div class="person">
+        <strong>Antônio Flávio Oliveira Avelino</strong>
+        <p>Desenvolvedor / Pesquisador</p>
+        <p>
+          Pesquisa dos temas, aplicação das informações e desenvolvimento
+          do projeto.
+        </p>
+      </div>
+
+      <div class="person">
+        <strong>Gustavo Cézar Vitorino</strong>
+        <p>Integrante da equipe</p>
+        <p>
+          Participação no desenvolvimento e nas atividades do projeto.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="highlight">
+      <strong>Instituição:</strong> ECIT. Dr. Dionísio da Costa<br>
+      <strong>Curso / Disciplina:</strong> Informática<br>
+      <strong>Professor / Orientador:</strong> Allan Medeiros de Lima<br>
+      <strong>Local e ano:</strong> Patos-PB, UEPB, 2026
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="cta">
+      <h2>O descarte correto começa com informação.</h2>
+      <p>
+        Antes de jogar fora um eletrônico, procure saber qual é a forma
+        adequada de encaminhá-lo. Pequenas atitudes podem contribuir para
+        uma comunidade mais consciente e sustentável.
+      </p>
+      <a class="btn btn-primary" href="#inicio">Voltar ao início ↑</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-content">
+    <div>
+      <strong>E-Lixo Consciente</strong>
+      <p class="small">Projeto educativo sobre resíduos eletrônicos em Patos-PB.</p>
+      <p class="small">Informações sobre pontos de descarte pesquisadas e atualizadas em outubro de 2026.</p>
+    </div>
+
+    <div class="small">
+      ECIT. Dr. Dionísio da Costa • Informática • 2026
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
