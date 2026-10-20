@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="E-Lixo Consciente: projeto educativo sobre descarte correto de resíduos eletroeletrônicos em Patos-PB, com orientações e links para fontes oficiais.">
+  <meta name="theme-color" content="#0f5132">
+  <title>E-Lixo Consciente | Patos-PB</title>
+  <style>
+    :root {
+      --green: #168447;
+      --green-dark: #0f5132;
+      --green-light: #e6f6ec;
+      --teal: #0f766e;
+      --ink: #173329;
+      --text: #33483e;
+      --muted: #62766b;
+      --paper: #f7faf8;
+      --white: #fff;
+      --line: #dce9e0;
+      --shadow: 0 12px 35px rgba(16, 35, 27, .09);
+      --radius: 20px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; color: var(--text); background: var(--paper); line-height: 1.65; }
+    a { color: var(--green-dark); }
+    a:focus-visible, button:focus-visible { outline: 3px solid #f59e0b; outline-offset: 3px; }
+    .skip-link { position: absolute; left: -9999px; top: 10px; background: white; padding: 10px; z-index: 2000; }
+    .skip-link:focus { left: 10px; }
+    header { position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,.97); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+    .nav { max-width: 1180px; margin: auto; padding: 12px 22px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .logo { display: flex; align-items: center; gap: 10px; color: var(--green-dark); text-decoration: none; font-weight: 850; font-size: 1.05rem; white-space: nowrap; }
+    .logo-mark { display: grid; place-items: center; width: 40px; height: 40px; color: white; background: var(--green); border-radius: 13px; font-size: 1.35rem; }
+    nav { display: flex; gap: 17px; align-items: center; justify-content: flex-end; flex-wrap: wrap; }
+    nav a { color: #3c5749; font-size: .88rem; font-weight: 700; text-decoration: none; }
+    nav a:hover { color: var(--green); }
+    .hero { color: white; background: radial-gradient(circle at 85% 15%, rgba(134,239,172,.24), transparent 25%), linear-gradient(135deg, #0f5132, #0f766e); padding: 84px 22px 92px; }
+    .hero-inner { max-width: 1180px; margin: auto; display: grid; grid-template-columns: 1.25fr .75fr; gap: 48px; align-items: center; }
+    .eyebrow { display: inline-block; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25); padding: 7px 13px; border-radius: 999px; margin-bottom: 20px; font-size: .83rem; font-weight: 750; }
+    h1 { font-size: clamp(2.45rem, 6vw, 4.5rem); line-height: 1.04; letter-spacing: -.04em; margin-bottom: 20px; }
+    h1 span { color: #86efac; }
+    .hero p { max-width: 700px; font-size: 1.1rem; color: #e8fff0; margin-bottom: 27px; }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 18px; border-radius: 12px; text-decoration: none; font-weight: 800; transition: transform .2s, opacity .2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { color: var(--green-dark); background: white; }
+    .btn-secondary { color: white; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.35); }
+    .hero-card { padding: 28px; border-radius: 25px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.22); box-shadow: 0 20px 50px rgba(0,0,0,.13); }
+    .hero-icon { font-size: 4.5rem; margin-bottom: 8px; }
+    .hero-card h2 { font-size: 1.45rem; margin-bottom: 8px; }
+    .hero-card p { font-size: .98rem; margin: 0; }
+    section { padding: 76px 22px; }
+    .container { max-width: 1180px; margin: auto; }
+    .section-head { max-width: 780px; margin-bottom: 34px; }
+    .tag { color: var(--green); text-transform: uppercase; letter-spacing: .1em; font-size: .78rem; font-weight: 850; }
+    h2 { color: var(--ink); font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.15; letter-spacing: -.025em; margin: 7px 0 12px; }
+    .section-head p { color: var(--muted); }
+    h3 { color: var(--green-dark); line-height: 1.3; margin-bottom: 9px; font-size: 1.13rem; }
+    p + p { margin-top: 10px; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .card, .location, .source-card { background: white; border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); }
+    .card-icon { font-size: 2rem; margin-bottom: 12px; }
+    .card p, .location p, .source-card p { color: var(--muted); }
+    .highlight { margin-top: 24px; padding: 20px 22px; border-radius: 14px; background: var(--green-light); border-left: 5px solid var(--green); }
+    .soft { background: #eef7f1; }
+    .items { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .item { display: flex; align-items: flex-start; gap: 15px; background: white; border: 1px solid var(--line); padding: 22px; border-radius: 18px; }
+    .item-icon { flex: 0 0 44px; height: 44px; display: grid; place-items: center; background: var(--green-light); border-radius: 12px; font-size: 1.35rem; }
+    .steps { display: grid; gap: 15px; counter-reset: step; }
+    .step { counter-increment: step; position: relative; padding: 21px 24px 21px 76px; background: white; border: 1px solid var(--line); border-radius: 17px; }
+    .step::before { content: counter(step); position: absolute; left: 22px; top: 20px; width: 37px; height: 37px; border-radius: 50%; display: grid; place-items: center; background: var(--green); color: white; font-weight: 850; }
+    .notice { margin-top: 23px; padding: 19px 21px; border-radius: 15px; color: #784516; background: #fff7ed; border: 1px solid #fed7aa; }
+    .locations { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .location .pin { font-size: 1.8rem; margin-bottom: 8px; }
+    .location a, .source-card a { font-weight: 800; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .link-list { display: grid; gap: 12px; margin-top: 14px; }
+    .link-row { display: flex; gap: 12px; align-items: flex-start; background: white; border: 1px solid var(--line); border-radius: 14px; padding: 15px; }
+    .link-row span { font-size: 1.3rem; }
+    .team { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .person { padding: 24px; background: white; border: 1px solid var(--line); border-radius: 18px; }
+    .person strong { display: block; color: var(--green-dark); font-size: 1.1rem; margin-bottom: 4px; }
+    .cta { text-align: center; color: white; padding: 48px 28px; border-radius: 28px; background: linear-gradient(135deg, #0f5132, #0f766e); }
+    .cta h2 { color: white; }
+    .cta p { max-width: 760px; margin: 0 auto 23px; color: #e8fff0; }
+    footer { background: #0b1f16; color: #c8d8d0; padding: 34px 22px; }
+    .footer-inner { max-width: 1180px; margin: auto; display: flex; justify-content: space-between; gap: 22px; flex-wrap: wrap; }
+    footer strong { color: white; }
+    .small { color: #a8bdb2; font-size: .87rem; }
+    .updated { display: inline-block; margin-top: 12px; padding: 4px 9px; border: 1px solid rgba(255,255,255,.22); border-radius: 7px; font-size: .78rem; }
+    @media (max-width: 900px) { .hero-inner { grid-template-columns: 1fr; } .grid { grid-template-columns: repeat(2, 1fr); } nav { gap: 10px; } }
+    @media (max-width: 650px) {
+      .nav { align-items: flex-start; flex-direction: column; padding: 11px 18px; }
+      nav { justify-content: flex-start; gap: 8px 14px; }
+      nav a { font-size: .82rem; }
+      section { padding: 58px 18px; }
+      .hero { padding: 62px 18px; }
+      .grid, .items, .locations, .team { grid-template-columns: 1fr; }
+      .hero-card { padding: 23px; }
+      .step { padding: 20px 18px 20px 68px; }
+      .step::before { left: 17px; }
+      .cta { padding: 34px 20px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header>
+    <div class="nav">
+      <a class="logo" href="#inicio" aria-label="E-Lixo Consciente, início"><span class="logo-mark">♻</span> E-Lixo Consciente</a>
+      <nav aria-label="Navegação principal">
+        <a href="#sobre">O que é?</a>
+        <a href="#impactos">Impactos</a>
+        <a href="#descarte">Como descartar</a>
+        <a href="#locais">Pontos de coleta</a>
+        <a href="#fontes">Fontes</a>
+        <a href="#equipe">Equipe</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero" id="inicio">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">Projeto educativo • Patos-PB • 2026</div>
+          <h1>Dê um destino melhor ao seu <span>lixo eletrônico.</span></h1>
+          <p>Informação confiável para descartar equipamentos eletrônicos com mais segurança, reduzir desperdícios e ajudar a proteger o meio ambiente.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#sobre">Conheça o projeto</a>
+            <a class="btn btn-secondary" href="#locais">Encontrar ponto de coleta</a>
+          </div>
+        </div>
+        <aside class="hero-card">
+          <div class="hero-icon" aria-hidden="true">💻♻️</div>
+          <h2>Seu eletrônico não deve ir para o lixo comum.</h2>
+          <p>Celulares, computadores, cabos e outros equipamentos podem conter materiais reaproveitáveis e componentes que exigem manejo adequado.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="sobre">
+      <div class="container">
+        <div class="section-head">
+          <div class="tag">01 • Entenda</div>
+          <h2>O que são resíduos eletroeletrônicos?</h2>
+          <p>São equipamentos elétricos ou eletrônicos descartados porque quebraram, ficaram obsoletos ou deixaram de ser úteis. A legislação brasileira prevê sistemas de logística reversa para diversas categorias de eletroeletrônicos de uso doméstico.</p>
+        </div>
+        <div class="grid">
+          <article class="card"><div class="card-icon" aria-hidden="true">📱</div><h3>Celulares e tablets</h3><p>Aparelhos antigos ou danificados, além de acessórios como carregadores e cabos.</p></article>
+          <article class="card"><div class="card-icon" aria-hidden="true">💻</div><h3>Computadores</h3><p>Desktops, notebooks, teclados, mouses, monitores e periféricos sem uso.</p></article>
+          <article class="card"><div class="card-icon" aria-hidden="true">🖨️</div><h3>Impressoras e equipamentos</h3><p>Impressoras, televisores, videogames e outros aparelhos elétricos e eletrônicos domésticos.</p></article>
+          <article class="card"><div class="card-icon" aria-hidden="true">🔋</div><h3>Pilhas e baterias</h3><p>Precisam ser encaminhadas a sistemas de coleta apropriados. As regras podem ser diferentes das aplicáveis aos aparelhos completos.</p></article>
+          <article class="card"><div class="card-icon" aria-hidden="true">🔧</div><h3>Reparo e reutilização</h3><p>Se o equipamento ainda puder ser consertado ou reutilizado com segurança, prolongar sua vida útil pode evitar a geração de resíduos.</p></article>
+          <article class="card"><div class="card-icon" aria-hidden="true">♻️</div><h3>Reciclagem responsável</h3><p>A coleta especializada pode permitir recuperação de materiais e destinação adequada das partes que não podem ser reaproveitadas.</p></article>
+        </div>
+        <div class="highlight"><strong>Em resumo:</strong> não descarte eletrônicos no lixo doméstico comum nem desmonte baterias ou componentes por conta própria. Procure um sistema de recebimento que aceite especificamente o material que você tem.</div>
+      </div>
+    </section>
+
+    <section id="impactos" class="soft">
+      <div class="container">
+        <div class="section-head">
+          <div class="tag">02 • Por que importa?</div>
+          <h2>Os impactos do descarte inadequado</h2>
+          <p>Os riscos variam conforme o tipo de aparelho, sua composição e a forma como ele é armazenado ou processado. O manejo incorreto pode prejudicar o ambiente e a saúde.</p>
+        </div>
+        <div class="items">
+          <article class="item"><div class="item-icon" aria-hidden="true">🌎</div><div><h3>Pressão sobre o meio ambiente</h3><p>O descarte irregular pode liberar substâncias indesejadas no ambiente, dependendo dos materiais presentes e das condições de degradação.</p></div></article>
+          <article class="item"><div class="item-icon" aria-hidden="true">💧</div><div><h3>Risco de contaminação</h3><p>O gerenciamento inadequado pode contribuir para a contaminação do solo e da água por substâncias presentes em determinados equipamentos.</p></div></article>
+          <article class="item"><div class="item-icon" aria-hidden="true">🔥</div><div><h3>Incêndios e acidentes</h3><p>Baterias danificadas ou manipuladas incorretamente podem causar incêndios e outros acidentes. Não perfure, esmague ou abra baterias.</p></div></article>
+          <article class="item"><div class="item-icon" aria-hidden="true">🔄</div><div><h3>Perda de materiais úteis</h3><p>Metais, plásticos e outros componentes podem deixar de retornar à cadeia produtiva quando o equipamento não é encaminhado a um destino adequado.</p></div></article>
+        </div>
+        <div class="highlight"><strong>Base da informação:</strong> o Sistema Nacional de Informações sobre a Gestão de Resíduos Sólidos (SINIR), do Governo Federal, descreve os riscos ambientais e à saúde associados ao gerenciamento inadequado de eletroeletrônicos.</div>
+      </div>
+    </section>
+
+    <section id="descarte">
+      <div class="container">
+        <div class="section-head">
+          <div class="tag">03 • Faça sua parte</div>
+          <h2>Como descartar corretamente?</h2>
+          <p>Antes de sair de casa, confira o tipo de resíduo e as regras do ponto de recebimento escolhido.</p>
+        </div>
+        <div class="steps">
+          <article class="step"><h3>Separe e identifique</h3><p>Separe os equipamentos dos resíduos domésticos. Não misture pilhas, baterias soltas ou lâmpadas com aparelhos comuns sem antes verificar a orientação do coletor.</p></article>
+          <article class="step"><h3>Proteja seus dados</h3><p>Faça cópia dos arquivos importantes, encerre as sessões das contas e restaure o aparelho às configurações de fábrica quando possível. Remova cartões SIM e cartões de memória.</p></article>
+          <article class="step"><h3>Cuide das baterias</h3><p>Não entregue baterias inchadas, perfuradas ou danificadas sem avisar previamente o ponto de coleta. Não tente abrir, desmontar ou transportar uma bateria danificada sem orientação especializada.</p></article>
+          <article class="step"><h3>Consulte um ponto de recebimento</h3><p>Use os localizadores oficiais da ABREE ou da Green Eletron, disponíveis abaixo. Confirme endereço, horário e quais categorias são aceitas antes de levar o material.</p></article>
+          <article class="step"><h3>Prefira reutilizar quando for seguro</h3><p>Se o aparelho ainda funcionar, considere conserto, doação ou reutilização responsável. Não doe equipamentos com dados pessoais sem antes proteger suas informações.</p></article>
+        </div>
+        <div class="notice"><strong>⚠️ Importante:</strong> não foi possível confirmar, por fonte pública oficial consultada nesta revisão, um endereço fixo específico em Patos-PB que receba todas as categorias de lixo eletrônico. Por isso, o site direciona para localizadores de sistemas de logística reversa e recomenda confirmar a disponibilidade antes do deslocamento.</div>
+      </div>
+    </section>
+
+    <section id="locais" class="soft">
+      <div class="container">
+        <div class="section-head">
+          <div class="tag">04 • Patos-PB</div>
+          <h2>Onde procurar pontos de coleta?</h2>
+          <p>Os localizadores abaixo são mantidos por entidades gestoras de logística reversa indicadas pelo SINIR, órgão federal. Pesquise por “Patos, Paraíba” e confirme se existe um ponto ativo perto de você.</p>
+        </div>
+        <div class="locations">
+          <article class="location">
+            <div class="pin" aria-hidden="true">🗺️</div>
+            <h3>Green Eletron</h3>
+            <p>Consulte o localizador oficial para encontrar pontos de entrega voluntária. A categoria disponível pode variar conforme o local — por exemplo, pilhas/eletrônicos.</p>
+            <p style="margin-top:14px"><a href="https://greeneletron.org.br/localizador" target="_blank" rel="noopener noreferrer">Abrir localizador oficial →</a></p>
+          </article>
+          <article class="location">
+            <div class="pin" aria-hidden="true">📍</div>
+            <h3>ABREE</h3>
+            <p>A ABREE disponibiliza uma página oficial de pontos de recebimento para eletroeletrônicos e eletrodomésticos. Verifique as categorias aceitas pelo ponto escolhido.</p>
+            <p style="margin-top:14px"><a href="https://abree.org.br/pontos-de-recebimento" target="_blank" rel="noopener noreferrer">Consultar pontos de recebimento →</a></p>
+          </article>
+        </div>
+        <div class="notice"><strong>Antes de ir:</strong> confira se o resultado é realmente em Patos-PB, o horário de funcionamento, os materiais aceitos e eventuais condições de entrega. Não considere um estabelecimento como ponto de coleta apenas por vender ou consertar eletrônicos.</div>
+      </div>
+    </section>
+
+    <section id="legislacao">
+      <div class="container">
+        <div class="section-head">
+          <div class="tag">05 • Seus direitos e responsabilidades</div>
+          <h2>O que diz a legislação brasileira?</h2>
+          <p>As orientações deste projeto foram conferidas com páginas e normas oficiais. Esta seção é informativa e não substitui a leitura dos textos legais.</p>
+        </div>
+        <div class="grid">
+          <article class="card"><div class="card-icon" aria-hidden="true">⚖️</div><h3>Política Nacional de Resíduos Sólidos</h3><p>A Lei nº 12.305/2010 estabelece princípios para a gestão de resíduos e prevê a responsabilidade compartilhada pelo ciclo de vida dos produtos, incluindo instrumentos de logística reversa.</p><p style="margin-top:14px"><a href="https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12305.htm" target="_blank" rel="noopener noreferrer">Ler a lei no Planalto →</a></p></article>
+          <article class="card"><div class="card-icon" aria-hidden="true">📜</div><h3>Decreto nº 10.240/2020</h3><p>Regulamenta a logística reversa de produtos eletroeletrônicos e seus componentes de uso doméstico, com etapas de recebimento, armazenamento, transporte e destinação ambientalmente adequada.</p><p style="margin-top:14px"><a href="https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2020/decreto/d10240.htm" target="_blank" rel="noopener noreferrer">Ler o decreto no Planalto →</a></p></article>
+          <article class="card"><div class="card-icon" aria-hidden="true">🏛️</div><h3>SINIR — Governo Federal</h3><p>O SINIR explica como funciona a logística reversa de eletroeletrônicos e indica os localizadores da ABREE e da Green Eletron.</p><p style="margin-top:14px"><a href="https://sinir.gov.br/perfis/logistica-reversa/logistica-reversa/eletroeletronicos" target="_blank" rel="noopener noreferrer">Consultar a página do SINIR →</a></p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="fontes" class="soft">
+      <div class="container">
+        <div class="section-head">
+          <div class="tag">06 • Referências</div>
+          <h2>Fontes oficiais e consulta</h2>
+          <p>Prioridade para legislação e órgãos públicos. Os links foram verificados em 20 de outubro de 2026; páginas e localizadores podem mudar, então consulte-os novamente antes de descartar materiais.</p>
+        </div>
+        <div class="link-list">
+          <div class="link-row"><span aria-hidden="true">🏛️</span><div><h3>SINIR — Eletroeletrônicos e seus componentes de uso doméstico</h3><p>Informações sobre riscos, funcionamento da logística reversa, legislação e entidades gestoras.</p><a href="https://sinir.gov.br/perfis/logistica-reversa/logistica-reversa/eletroeletronicos" target="_blank" rel="noopener noreferrer">sinir.gov.br — página oficial</a></div></div>
+          <div class="link-row"><span aria-hidden="true">📘</span><div><h3>Lei nº 12.305/2010 — Planalto</h3><p>Texto legal da Política Nacional de Resíduos Sólidos.</p><a href="https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12305.htm" target="_blank" rel="noopener noreferrer">planalto.gov.br — texto da lei</a></div></div>
+          <div class="link-row"><span aria-hidden="true">📄</span><div><h3>Decreto nº 10.240/2020 — Planalto</h3><p>Regulamentação da logística reversa de eletroeletrônicos de uso doméstico.</p><a href="https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2020/decreto/d10240.htm" target="_blank" rel="noopener noreferrer">planalto.gov.br — texto do decreto</a></div></div>
+          <div class="link-row"><span aria-hidden="true">🌿</span><div><h3>Green Eletron — Localizador</h3><p>Ferramenta de consulta para pontos de entrega voluntária.</p><a href="https://greeneletron.org.br/localizador" target="_blank" rel="noopener noreferrer">greeneletron.org.br — localizador</a></div></div>
+          <div class="link-row"><span aria-hidden="true">♻️</span><div><h3>ABREE — Pontos de recebimento</h3><p>Consulta de locais de recebimento de eletroeletrônicos e eletrodomésticos.</p><a href="https://abree.org.br/pontos-de-recebimento" target="_blank" rel="noopener noreferrer">abree.org.br — pontos de recebimento</a></div></div>
+          <div class="link-row"><span aria-hidden="true">🌱</span><div><h3>IBAMA — Política Nacional de Resíduos Sólidos</h3><p>Contextualização institucional da política nacional de resíduos.</p><a href="https://www.gov.br/ibama/pt-br/assuntos/emissoes-e-residuos/residuos/politica-nacional-de-residuos-solidos-pnrs" target="_blank" rel="noopener noreferrer">gov.br/ibama — página institucional</a></div></div>
+        </div>
+        <div class="highlight"><strong>Nota sobre Patos-PB:</strong> nesta revisão, não foi incluído um endereço local como confirmado porque não encontramos confirmação pública oficial suficiente de um ponto fixo ativo com endereço e categorias aceitas. Os localizadores oficiais são a forma mais segura de consultar a disponibilidade atual.</div>
+      </div>
+    </section>
+
+    <section id="proposito">
+      <div class="container">
+        <div class="section-head">
+          <div class="tag">07 • Nosso propósito</div>
+          <h2>Informação pode virar atitude.</h2>
+          <p>O E-Lixo Consciente busca facilitar o acesso a informações verificáveis sobre resíduos eletrônicos e incentivar hábitos responsáveis na comunidade de Patos-PB.</p>
+        </div>
+        <div class="grid">
+          <article class="card"><div class="card-icon" aria-hidden="true">📚</div><h3>Informar</h3><p>Explicar o que são resíduos eletroeletrônicos e por que precisam de destinação adequada.</p></article>
+          <article class="card"><div class="card-icon" aria-hidden="true">🧭</div><h3>Orientar</h3><p>Mostrar como proteger dados, separar materiais e consultar pontos de recebimento.</p></article>
+          <article class="card"><div class="card-icon" aria-hidden="true">🌱</div><h3>Conscientizar</h3><p>Estimular reparo, reutilização e reciclagem responsável, reduzindo o desperdício.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="equipe" class="soft">
+      <div class="container">
+        <div class="section-head">
+          <div class="tag">08 • Equipe</div>
+          <h2>Quem desenvolveu o projeto?</h2>
+          <p>Projeto escolar desenvolvido para a disciplina de Informática.</p>
+        </div>
+        <div class="team">
+          <article class="person"><strong>Antônio Flávio Oliveira Avelino</strong><p>Desenvolvedor / Pesquisador</p><p>Pesquisa dos temas, aplicação das informações e desenvolvimento do projeto.</p></article>
+          <article class="person"><strong>Gustavo Cézar Vitorino</strong><p>Integrante da equipe</p><p>Participação no desenvolvimento e nas atividades do projeto.</p></article>
+        </div>
+        <div class="highlight">
+          <strong>Instituição:</strong> ECIT. Dr. Dionísio da Costa<br>
+          <strong>Curso / Disciplina:</strong> Informática<br>
+          <strong>Professor / Orientador:</strong> Allan Medeiros de Lima<br>
+          <strong>Local:</strong> Patos-PB<br>
+          <strong>Ano do projeto:</strong> 2026
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="cta">
+          <h2>O descarte correto começa com informação.</h2>
+          <p>Antes de se desfazer de um eletrônico, consulte as orientações e confirme o ponto de recebimento. Uma escolha responsável ajuda a proteger seus dados, recuperar materiais e reduzir riscos ambientais.</p>
+          <a class="btn btn-primary" href="#inicio">Voltar ao início ↑</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div><strong>E-Lixo Consciente</strong><p class="small">Projeto educativo sobre resíduos eletroeletrônicos em Patos-PB.</p><span class="updated">Revisado em 20/10/2026</span></div>
+      <div class="small">ECIT. Dr. Dionísio da Costa • Informática • 2026<br>Conteúdo educativo com referências oficiais.</div>
+    </div>
+  </footer>
+</body>
+</html>
